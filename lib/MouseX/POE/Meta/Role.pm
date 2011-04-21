@@ -1,7 +1,7 @@
-package MooseX::POE::Meta::Role;
+package MouseX::POE::Meta::Role;
 # ABSTRACT: Pay no attention to this.
-use Moose::Role;
-with qw(MooseX::POE::Meta::Trait);
+use Mouse::Role;
+with qw(MouseX::POE::Meta::Trait);
 
 around default_events => sub {
     my ( $orig, $self ) = @_;
@@ -17,7 +17,7 @@ around get_state_method_name => sub {
 };
 
 
-no Moose::Role;
+no Mouse::Role;
 
 1;
 

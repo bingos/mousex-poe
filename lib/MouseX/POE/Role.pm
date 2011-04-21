@@ -1,15 +1,15 @@
-package MooseX::POE::Role;
+package MouseX::POE::Role;
 # ABSTRACT: Eventful roles
-use MooseX::POE::Meta::Role;
+use MouseX::POE::Meta::Role;
 
-use Moose::Exporter;
+use Mouse::Exporter;
 
-my ( $import, $unimport, $init_meta ) = Moose::Exporter->setup_import_methods(
+my ( $import, $unimport, $init_meta ) = Mouse::Exporter->setup_import_methods(
     with_caller    => [qw(event)],
-    also           => 'Moose::Role',
+    also           => 'Mouse::Role',
     install        => [qw(import unimport)],
     role_metaroles => {
-        role => ['MooseX::POE::Meta::Role'],
+        role => ['MouseX::POE::Meta::Role'],
     },
 );
 
@@ -19,14 +19,14 @@ sub init_meta {
     my $for = $args{for_class};
     eval qq{package $for; use POE; };
 
-    Moose::Role->init_meta( for_class => $for );
+    Mouse::Role->init_meta( for_class => $for );
 
     goto $init_meta;
 }
 
 sub event {
     my ( $caller, $name, $method ) = @_;
-    my $class = Moose::Meta::Class->initialize($caller);
+    my $class = Mouse::Meta::Class->initialize($caller);
     $class->add_state_method( $name => $method );
 }
 
@@ -37,7 +37,7 @@ __END__
 =head1 SYNOPSIS
 
     package Counter;
-    use MooseX::POE::Role;
+    use MouseX::POE::Role;
 
     ...
 
@@ -47,7 +47,7 @@ __END__
   
 =head1 DESCRIPTION
 
-This is what L<MooseX::POE> is to Moose but with L<Moose::Role>.
+This is what L<MouseX::POE> is to Mouse but with L<Mouse::Role>.
 
 =head1 KEYWORDS
 
@@ -56,6 +56,6 @@ This is what L<MooseX::POE> is to Moose but with L<Moose::Role>.
 Create an event handler named $name. 
 
 =for :list
-* L<MooseX::POE|MooseX::POE>
-* L<Moose::Role> 
+* L<MouseX::POE|MouseX::POE>
+* L<Mouse::Role> 
 

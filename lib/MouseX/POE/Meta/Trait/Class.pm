@@ -1,8 +1,8 @@
-package MooseX::POE::Meta::Trait::Class;
+package MouseX::POE::Meta::Trait::Class;
 # ABSTRACT: No achmed inside
-use Moose::Role;
+use Mouse::Role;
 
-with qw(MooseX::POE::Meta::Trait);
+with qw(MouseX::POE::Meta::Trait);
 
 # TODO: subclass events to be a hashref that maps the event to the method
 # so we can support on_ events
@@ -19,7 +19,7 @@ around add_role => sub {
     $next->( $self, $role );
 
     if (   $role->meta->can('does_role')
-        && $role->meta->does_role("MooseX::POE::Meta::Trait") ) {
+        && $role->meta->does_role("MouseX::POE::Meta::Trait") ) {
         $self->add_event( $role->get_events );
     }
 };
@@ -32,11 +32,11 @@ around get_state_method_name => sub {
 
 sub get_all_events {
     my ($self) = @_;
-    my $wanted_role = 'MooseX::POE::Meta::Trait';
+    my $wanted_role = 'MouseX::POE::Meta::Trait';
 
-    # This horrible grep can be removed once Moose gets more metacircular.
-    # Currently Moose::Meta::Class->meta isn't a MMC. It should be, and it
-    # should also be a Moose::Object so does works on it.
+    # This horrible grep can be removed once Mouse gets more metacircular.
+    # Currently Mouse::Meta::Class->meta isn't a MMC. It should be, and it
+    # should also be a Mouse::Object so does works on it.
     my %events
         = map {
         my $m = $_;
@@ -49,7 +49,7 @@ sub get_all_events {
     return %events;
 }
 
-no Moose::Role;
+no Mouse::Role;
 1;
 __END__
 
@@ -59,6 +59,6 @@ __END__
 
 =head1 DEPENDENCIES
 
-Moose::Role
+Mouse::Role
 
 =cut

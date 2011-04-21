@@ -1,10 +1,10 @@
-package MooseX::POE::Meta::Method::State;
+package MouseX::POE::Meta::Method::State;
 # ABSTRACT: Dont look into this, its boring
 use strict;
-use Moose;
-extends qw(Moose::Meta::Method);
+use Mouse;
+extends qw(Mouse::Meta::Method);
 
-no Moose;
+no Mouse;
 1;
 __END__
 

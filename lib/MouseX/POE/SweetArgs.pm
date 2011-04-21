@@ -1,23 +1,23 @@
-package MooseX::POE::SweetArgs;
-# ABSTRACT: sugar around MooseX::POE event arguments
+package MouseX::POE::SweetArgs;
+# ABSTRACT: sugar around MouseX::POE event arguments
 
-use Moose ();
-use MooseX::POE;
-use Moose::Exporter;
+use Mouse ();
+use MouseX::POE;
+use Mouse::Exporter;
 
 
-Moose::Exporter->setup_import_methods(
-    also        => 'MooseX::POE',
+Mouse::Exporter->setup_import_methods(
+    also        => 'MouseX::POE',
 );
 
 sub init_meta {
     my ($class, %args) = @_;
-    MooseX::POE->init_meta(%args);
+    MouseX::POE->init_meta(%args);
 
-    Moose::Util::MetaRole::apply_metaroles(
+    Mouse::Util::MetaRole::apply_metaroles(
         for             => $args{for_class},
         class_metaroles => {
-            class => ['MooseX::POE::Meta::Trait::SweetArgs'],
+            class => ['MouseX::POE::Meta::Trait::SweetArgs'],
         },
     );
 }
@@ -29,7 +29,7 @@ __END__
 =head1 SYNOPSIS
 
   package Thing;
-  use MooseX::POE::SweetArgs;
+  use MouseX::POE::SweetArgs;
 
   # declare events like usual
   event on_success => sub {
@@ -42,12 +42,12 @@ __END__
 
 =head1 DESCRIPTION
 
-Normally, when using MooseX::POE, subs declared as events need to use POE
+Normally, when using MouseX::POE, subs declared as events need to use POE
 macros for unpacking C<@_>, e.g.:
 
   my ($self, $foo, $bar) = @_[OBJECT, ARG0..$#_];
 
-Using MooseX::POE::SweetArgs as a metaclass lets you avoid this, and just use
+Using MouseX::POE::SweetArgs as a metaclass lets you avoid this, and just use
 C<@_> as normal:
 
   my ($self, $foo, $bar) = @_;
@@ -55,7 +55,7 @@ C<@_> as normal:
 Since the POE kernel is a singleton, you can access it using class methods, as
 shown in the synopsis.
 
-In all other respects, this behaves exactly like MooseX::POE
+In all other respects, this behaves exactly like MouseX::POE
 
 =for :list
-* L<MooseX::POE|MooseX::POE>
+* L<MouseX::POE|MouseX::POE>

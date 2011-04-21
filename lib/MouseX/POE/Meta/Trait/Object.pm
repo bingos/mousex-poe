@@ -1,7 +1,7 @@
-package MooseX::POE::Meta::Trait::Object;
-# ABSTRACT: The base class role for MooseX::POE
+package MouseX::POE::Meta::Trait::Object;
+# ABSTRACT: The base class role for MouseX::POE
 
-use Moose::Role;
+use Mouse::Role;
 use POE::Session;
 
 sub BUILD {
@@ -88,7 +88,7 @@ __PACKAGE__->meta->add_method(
     _parent => __PACKAGE__->meta->get_method('PARENT') )
     if __PACKAGE__->meta->has_method('PARENT');
 	
-no Moose::Role;
+no Mouse::Role;
 
 1;
 
@@ -97,7 +97,7 @@ __END__
 =head1 SYNOPSIS
 
     package Counter;
-    use MooseX::Poe;
+    use MouseX::Poe;
 
     has name => (
         isa     => 'Str',
@@ -123,13 +123,13 @@ __END__
         $self->yield('increment') unless $self->count > 3;
     }
 
-    no MooseX::Poe;
+    no MouseX::Poe;
 
   
 =head1 DESCRIPTION
 
-MooseX::POE::Meta::TraitObject is a role that is applied to the object base
-classe (usually Moose::Object) that implements a POE::Session.
+MouseX::POE::Meta::TraitObject is a role that is applied to the object base
+classe (usually Mouse::Object) that implements a POE::Session.
 
 =head1 DEFAULT METHODS
 
@@ -166,7 +166,7 @@ A cheap alias for the same POE::Kernel function which will gurantee posting to t
 
 =method STARTALL
 
-Along similar lines to Moose's C<BUILDALL> method which calls all the C<BUILD>
+Along similar lines to Mouse's C<BUILDALL> method which calls all the C<BUILD>
 methods, this function will call all the C<START> methods in your inheritance
 hierarchy automatically when POE first runs your session. (This corresponds to
 the C<_start> event from POE.)

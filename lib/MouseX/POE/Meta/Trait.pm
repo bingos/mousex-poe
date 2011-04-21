@@ -1,8 +1,8 @@
-package MooseX::POE::Meta::Trait;
+package MouseX::POE::Meta::Trait;
 # ABSTRACT: There be dragons here.
-use Moose::Role;
+use Mouse::Role;
 
-use MooseX::POE::Meta::Method::State;
+use MouseX::POE::Meta::Method::State;
 
 has events => (
     reader     => 'get_events',
@@ -38,7 +38,7 @@ sub add_state_method {
 after add_role => sub {
     my ( $self, $role ) = @_;
 
-    if ( $role->isa("MooseX::POE::Meta::Role") ) {
+    if ( $role->isa("MouseX::POE::Meta::Role") ) {
         $self->add_event( $role->get_events );
     }
 };

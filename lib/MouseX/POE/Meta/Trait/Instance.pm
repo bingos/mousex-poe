@@ -1,7 +1,7 @@
-package MooseX::POE::Meta::Trait::Instance;
-# ABSTRACT: A Instance Metaclass for MooseX::POE
+package MouseX::POE::Meta::Trait::Instance;
+# ABSTRACT: A Instance Metaclass for MouseX::POE
 
-use Moose::Role;
+use Mouse::Role;
 use POE;
 
 use Scalar::Util ();
@@ -37,26 +37,26 @@ sub inline_slot_access {
 }
 
 no POE;
-no Moose::Role;
+no Mouse::Role;
 1;
 __END__
 
 =head1 SYNOPSIS
 
-    Moose::Util::MetaRole::apply_metaclass_roles(
+    Mouse::Util::MetaRole::apply_metaclass_roles(
       for_class => $for_class,
       metaclass_roles => [ 
-        'MooseX::POE::Meta::Trait::Class' 
+        'MouseX::POE::Meta::Trait::Class' 
       ],
       instance_metaclass_roles => [
-        'MooseX::POE::Meta::Trait::Instance',
+        'MouseX::POE::Meta::Trait::Instance',
       ],
     );
 
   
 =head1 DESCRIPTION
 
-A metaclass for MooseX::POE. This module is only of use to developers 
+A metaclass for MouseX::POE. This module is only of use to developers 
 so there is no user documentation provided.
 
 =head1 METHODS

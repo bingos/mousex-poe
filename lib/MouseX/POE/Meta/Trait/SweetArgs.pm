@@ -1,7 +1,7 @@
-package MooseX::POE::Meta::Trait::SweetArgs;
+package MouseX::POE::Meta::Trait::SweetArgs;
 # ABSTRACT: Yes, its a trap... i mean trait
 
-use Moose::Role;
+use Mouse::Role;
 
 around add_state_method => sub {
   my $orig = shift;
@@ -11,18 +11,18 @@ around add_state_method => sub {
   });
 }; 
 
-no Moose::Role;
+no Mouse::Role;
 
 1;
 __END__
 
 =head1 SYNOPSIS
 
-use MooseX::POE::Meta::Trait::SweetArgs;
+use MouseX::POE::Meta::Trait::SweetArgs;
 
 =head1 DESCRIPTION
 
-The MooseX::POE::Meta::Trait::SweetArgs class implements ...
+The MouseX::POE::Meta::Trait::SweetArgs class implements ...
 
 =head1 SUBROUTINES / METHODS
 

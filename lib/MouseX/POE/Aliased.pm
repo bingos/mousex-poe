@@ -1,6 +1,6 @@
-package MooseX::POE::Aliased;
-# ABSTRACT: A sane alias attribute for your MooseX::POE objects.
-use MooseX::POE::Role;
+package MouseX::POE::Aliased;
+# ABSTRACT: A sane alias attribute for your MouseX::POE objects.
+use MouseX::POE::Role;
 
 use overload ();
 
@@ -48,9 +48,9 @@ __END__
 
 =head1 SYNOPSIS
 
-	use MooseX::POE;
+	use MouseX::POE;
 
-    with qw(MooseX::POE::Aliased);
+    with qw(MouseX::POE::Aliased);
 
     my $obj = Foo->new( alias => "blah" );
 
@@ -60,7 +60,7 @@ __END__
 
 =head1 DESCRIPTION
 
-This role provides an C<alias> attribute for your L<MooseX::POE> objects.
+This role provides an C<alias> attribute for your L<MouseX::POE> objects.
 
 The attribute can be set, causing the current alias to be cleared and the new
 value to be set.
