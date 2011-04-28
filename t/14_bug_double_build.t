@@ -6,9 +6,9 @@ my $cnt = 0;
 my $cnt_start = 0;
 
 {
-	package Test::MooseX::POE::DoubleBuild;
+	package Test::MouseX::POE::DoubleBuild;
 
-	use MooseX::POE;
+	use MouseX::POE;
 
 	sub START {
 		$cnt_start++;
@@ -19,7 +19,7 @@ my $cnt_start = 0;
 	}
 }
 
-Test::MooseX::POE::DoubleBuild->new;
+Test::MouseX::POE::DoubleBuild->new;
 
 is($cnt, 1, 'BUILD called once');
 

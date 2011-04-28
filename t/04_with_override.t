@@ -1,11 +1,11 @@
 use strict;
-use Test::More skip_all => 'Moose upstream needs to sort out composition';
+use Test::More skip_all => 'Mouse upstream needs to sort out composition';
 
 use Test::More tests => 2;
 
 {
     package Rollo;
-    use MooseX::POE::Role;
+    use MouseX::POE::Role;
 
     event foo => sub {
         ::fail('not overridden');
@@ -14,7 +14,7 @@ use Test::More tests => 2;
 
 {
     package Foo;
-    use MooseX::POE;
+    use MouseX::POE;
     with 'Rollo';
 
     sub START {

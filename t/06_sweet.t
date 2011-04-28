@@ -4,7 +4,7 @@ use Test::More tests => 3;
 
 {
   package Counter;
-  use MooseX::POE::SweetArgs;
+  use MouseX::POE::SweetArgs;
 
   has count => (is => 'rw', default => 1);
 
@@ -20,7 +20,7 @@ use Test::More tests => 3;
     $self->count( $self->count + $n );
   };
 
-  no MooseX::POE::SweetArgs;
+  no MouseX::POE::SweetArgs;
 }
 
 my $counter = Counter->new;

@@ -19,7 +19,7 @@ my %english = (
 {
 
     package ForkBomber;
-    use MooseX::POE;
+    use MouseX::POE;
 
     has id => (
         isa     => 'Str',

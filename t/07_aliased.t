@@ -13,9 +13,9 @@ my @log;
 {
 
     package Foo;
-    use MooseX::POE;
+    use MouseX::POE;
 
-    with qw(MooseX::POE::Aliased);
+    with qw(MouseX::POE::Aliased);
 
     event foo => sub {
         push @log, [ @_[ ARG0 .. $#_ ] ];
@@ -24,9 +24,9 @@ my @log;
 {
 
     package ImmutableFoo;
-    use MooseX::POE;
+    use MouseX::POE;
 
-    with qw(MooseX::POE::Aliased);
+    with qw(MouseX::POE::Aliased);
 
     event foo => sub {
         push @log, [ @_[ ARG0 .. $#_ ] ];
@@ -85,14 +85,14 @@ is_deeply( $log[1], ["that"], "second event under alias 'bar'" );
     sub POE::Kernel::ASSERT_DEFAULT () { 1 }
 
     package Aliased;
-    use MooseX::POE;
+    use MouseX::POE;
 
-    with qw/MooseX::POE::Aliased/;
+    with qw/MouseX::POE::Aliased/;
 
     has foo => ( is => 'rw', isa => 'Str', default => '' );
     has bar => ( is => 'rw', isa => 'Int', default => 0 );
 
-    no MooseX::POE;
+    no MouseX::POE;
 
 }
 

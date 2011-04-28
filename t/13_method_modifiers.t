@@ -5,7 +5,7 @@ use Test::More tests => 6;
 {
 
     package Base;
-    use MooseX::POE;
+    use MouseX::POE;
 
     sub START {
         ::pass('Base Start');
@@ -19,7 +19,7 @@ use Test::More tests => 6;
 {
 
     package Extended;
-    use MooseX::POE;
+    use MouseX::POE;
 
     extends 'Base';
 

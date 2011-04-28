@@ -8,7 +8,7 @@ plan tests => 10*$num_objs + $mem_cycle *2;
 {
 
     package Counter;
-    use MooseX::POE;
+    use MouseX::POE;
 
     has count => (
         isa     => 'Int',
@@ -49,7 +49,7 @@ plan tests => 10*$num_objs + $mem_cycle *2;
         ::pass('Stopping');
     }
 
-    no MooseX::POE;
+    no MouseX::POE;
 }
 
 my @objs = map { Counter->new(foo => 1) } ( 1 .. $num_objs );# .. 10 );

@@ -3,28 +3,28 @@ use strict;
 use warnings;
 
 use Test::More;
-use Test::Moose;
+use Test::Mouse;
 
 BEGIN { 
-  eval "use MooseX::Declare;";
-  plan skip_all => "MooseX::Declare not installed; skipping" if $@;
+  eval "use MouseX::Declare;";
+  plan skip_all => "MouseX::Declare not installed; skipping" if $@;
 }
 
 plan tests => 6;
 
 
 role Rollo {
-    use MooseX::POE::Role qw(event);
+    use MouseX::POE::Role qw(event);
     
     sub foo { ::pass('foo!')}
 
     event yarr => sub { ::pass("yarr!") }
 }
 
-does_ok(Rollo->meta, "MooseX::POE::Meta::Role");
+does_ok(Rollo->meta, "MouseX::POE::Meta::Role");
 
 class App with Rollo {
-    use MooseX::POE::SweetArgs qw(event);
+    use MouseX::POE::SweetArgs qw(event);
 
     sub START { 
         my ($self) = @_;

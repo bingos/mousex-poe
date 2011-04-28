@@ -14,6 +14,8 @@ around default_events => sub {
     return $events;
 };
 
+=for comment 
+
 around add_role => sub {
     my ( $next, $self, $role ) = @_;
     $next->( $self, $role );
@@ -23,6 +25,8 @@ around add_role => sub {
         $self->add_event( $role->get_events );
     }
 };
+
+=cut
 
 around get_state_method_name => sub {
     my ( $next, $self, $name ) = @_;

@@ -3,8 +3,9 @@ package MouseX::POE::Role;
 use MouseX::POE::Meta::Role;
 
 use Mouse::Exporter;
+use Mouse::Util::MetaRole;
 
-my ( $import, $unimport, $init_meta ) = Mouse::Exporter->setup_import_methods(
+Mouse::Exporter->setup_import_methods(
     with_caller    => [qw(event)],
     also           => 'Mouse::Role',
     install        => [qw(import unimport)],
@@ -19,7 +20,14 @@ sub init_meta {
     my $for = $args{for_class};
     eval qq{package $for; use POE; };
 
-    Mouse::Role->init_meta( for_class => $for );
+    my $init_meta = Mouse::Role->init_meta(%args);
+
+    Mouse::Util::MetaRole::apply_metaroles(
+          for             => $args{for_class},
+          role_metaroles => {
+              role => ['MouseX::POE::Meta::Role'],
+          },
+    );
 
     goto $init_meta;
 }
@@ -44,7 +52,7 @@ __END__
     package RealCounter;
 
     with qw(Counter);
-  
+
 =head1 DESCRIPTION
 
 This is what L<MouseX::POE> is to Mouse but with L<Mouse::Role>.
@@ -53,9 +61,9 @@ This is what L<MouseX::POE> is to Mouse but with L<Mouse::Role>.
 
 =method event $name $subref
 
-Create an event handler named $name. 
+Create an event handler named $name.
 
 =for :list
 * L<MouseX::POE|MouseX::POE>
-* L<Mouse::Role> 
+* L<Mouse::Role>
 

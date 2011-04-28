@@ -2,12 +2,12 @@
 use Test::More tests => 1;
 {
     package Getty;
-    use Moose::Role;
+    use Mouse::Role;
 }
 
 {
     package Pants;
-    use MooseX::POE::Role;
+    use MouseX::POE::Role;
 
     event 'wear' => sub {
         ::pass("I AM BEING WORN!");
@@ -16,7 +16,7 @@ use Test::More tests => 1;
 
 {
     package Clocks;
-    use MooseX::POE;
+    use MouseX::POE;
     with 'Pants', 'Getty';
 
     sub bork {

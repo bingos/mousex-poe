@@ -1,16 +1,16 @@
 #!/usr/bin/env perl
 use strict;
 use Test::More;
-eval "use MooseX::Daemonize";
-plan skip_all => "MooseX::Daemonize not installed; skipping" if $@;
+eval "use MouseX::Daemonize";
+plan skip_all => "MouseX::Daemonize not installed; skipping" if $@;
 
 plan tests => 3;
 
 {
     package App;
-    use MooseX::POE;
+    use MouseX::POE;
     
-    with qw(MooseX::Daemonize);
+    with qw(MouseX::Daemonize);
     
     sub START { 
         my ($self) = $_[OBJECT];

@@ -3,16 +3,13 @@ package MouseX::POE;
 
 use Mouse ();
 use Mouse::Exporter;
+use Mouse::Util::MetaRole;
+use Mouse::Util;
+use MouseX::POE::Meta::Trait::Class;
 
-my ( $import, $unimport, $init_meta ) = Mouse::Exporter->setup_import_methods(
-    with_caller     => [qw(event)],
+Mouse::Exporter->setup_import_methods(
+    as_is           => [qw(event)],
     also            => 'Mouse',
-    install         => [qw(import unimport)],
-    class_metaroles => {
-        class       => ['MouseX::POE::Meta::Trait::Class'],
-        instance    => ['MouseX::POE::Meta::Trait::Instance'],
-    },
-    base_class_roles => ['MouseX::POE::Meta::Trait::Object'],
 );
 
 sub init_meta {
@@ -21,15 +18,26 @@ sub init_meta {
     my $for = $args{for_class};
     eval qq{package $for; use POE; };
 
-    Mouse->init_meta( for_class => $for );
+    my $meta = Mouse->init_meta( %args );
 
-    goto $init_meta;
+    Mouse::Util::MetaRole::apply_metaroles(
+      for     => $args{for_class},
+      class_metaroles => {
+        class       => ['MouseX::POE::Meta::Trait::Class'],
+      },
+    );
+
+    Mouse::Util::MetaRole::apply_base_class_roles(
+      for_class => $args{for_class},
+      roles => ['MouseX::POE::Meta::Trait::Object','MouseX::POE::Meta::Trait','MouseX::POE::Meta::Trait::Class'],
+    );
+
+    return $meta;
 }
 
 sub event {
-    my ( $caller, $name, $method ) = @_;
-    my $class = Mouse::Meta::Class->initialize($caller);
-    $class->add_state_method( $name => $method );
+    my $class = Mouse::Meta::Class->initialize( scalar caller );
+    $class->add_state_method( @_ );
 }
 
 1;

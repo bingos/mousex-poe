@@ -4,7 +4,7 @@ use Test::More tests => 2;
 
     package mxpoe;
 
-    use MooseX::POE;
+    use MouseX::POE;
     use Test::More;
 
     sub START {
@@ -20,7 +20,7 @@ use Test::More tests => 2;
         return;
     };
 
-    no MooseX::POE;
+    no MouseX::POE;
 
     __PACKAGE__->meta->make_immutable;
 }
@@ -29,7 +29,7 @@ use Test::More tests => 2;
 
     package mxpoet;
 
-    use MooseX::POE;
+    use MouseX::POE;
     use Test::More;
 
     extends 'mxpoe';
@@ -41,7 +41,7 @@ use Test::More tests => 2;
         return;
     }
 
-    no MooseX::POE;
+    no MouseX::POE;
 }
 
 package main;

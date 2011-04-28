@@ -5,10 +5,10 @@ use Test::More tests => 1;
 
 {
     package Foo;
-    use MooseX::POE;
+    use MouseX::POE;
 
     package Bar;
-    use Moose;
+    use Mouse;
     has a => ( is => 'ro' );
 }
 

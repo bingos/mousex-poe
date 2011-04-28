@@ -28,7 +28,8 @@ sub BUILD {
 
 sub get_session_id {
     my ($self) = @_;
-    return $self->meta->get_meta_instance->get_session_id($self);
+    return $self->{session_id};
+    #return $self->meta->get_meta_instance->get_session_id($self);
 }
 
 sub yield { my $self = shift; POE::Kernel->post( $self->get_session_id, @_ ) }
@@ -55,17 +56,17 @@ sub STARTALL {
     my ( $self, @params ) = @_;
     $params[4] = pop @params;
     foreach
-        my $method ( reverse $self->meta->find_all_methods_by_name('START') )
+        my $method ( reverse $self->meta->find_method_by_name('START') )
     {
-        $method->{code}->( $self, @params );
+        $method->{body}->( $self, @params );
     }
 }
 
 sub STOPALL {
     my ( $self, $params ) = @_;
     foreach
-        my $method ( reverse $self->meta->find_all_methods_by_name('STOP') ) {
-        $method->{code}->( $self, $params );
+        my $method ( reverse $self->meta->find_method_by_name('STOP') ) {
+        $method->{body}->( $self, $params );
     }
 }
 
@@ -75,6 +76,8 @@ sub CHILD  { }
 sub PARENT { }
 
 # __PACKAGE__->meta->add_method( _stop => sub { POE::Kernel->call('STOP') } );
+
+=for comment
 
 __PACKAGE__->meta->add_method(
     _default => __PACKAGE__->meta->get_method('DEFAULT') )
@@ -87,7 +90,9 @@ __PACKAGE__->meta->add_method(
 __PACKAGE__->meta->add_method(
     _parent => __PACKAGE__->meta->get_method('PARENT') )
     if __PACKAGE__->meta->has_method('PARENT');
-	
+
+=cut
+
 no Mouse::Role;
 
 1;

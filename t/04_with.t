@@ -2,11 +2,11 @@
 
 use strict;
 use Test::More tests => 7;
-use Test::Moose;
+use Test::Mouse;
 
 {
     package Rollo;
-    use MooseX::POE::Role;
+    use MouseX::POE::Role;
     
     sub foo { ::pass('foo!')}
 
@@ -17,7 +17,7 @@ use Test::Moose;
 
 {
     package App;
-    use MooseX::POE;
+    use MouseX::POE;
     
     with qw(Rollo);
     

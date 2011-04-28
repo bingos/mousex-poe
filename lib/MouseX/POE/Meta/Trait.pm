@@ -35,6 +35,8 @@ sub add_state_method {
     $self->add_method( $name => $method );
 }
 
+=for comment
+
 after add_role => sub {
     my ( $self, $role ) = @_;
 
@@ -42,5 +44,7 @@ after add_role => sub {
         $self->add_event( $role->get_events );
     }
 };
+
+=cut
 
 1;

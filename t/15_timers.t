@@ -8,9 +8,9 @@ my $outside_cnt = 0;
 my $wrong_cnt = 0;
 
 {
-	package Test::MooseX::POE::Timers::Doer;
+	package Test::MouseX::POE::Timers::Doer;
 
-	use MooseX::POE;
+	use MouseX::POE;
 	
 	event 'tick' => sub {
 		my ( $self ) = @_;
@@ -41,13 +41,13 @@ my $wrong_cnt = 0;
 }
 
 {
-	package Test::MooseX::POE::Timers::SomeoneElse;
+	package Test::MouseX::POE::Timers::SomeoneElse;
 
-	use MooseX::POE;
+	use MouseX::POE;
 
 	sub START {
 		my ( $self ) = @_;
-		my $doer = Test::MooseX::POE::Timers::Doer->new();
+		my $doer = Test::MouseX::POE::Timers::Doer->new();
 		$doer->delay( 'tick' => 1 );
 		$doer->outside_self_delay;
 	}
@@ -57,7 +57,7 @@ my $wrong_cnt = 0;
 	};
 }
 
-Test::MooseX::POE::Timers::SomeoneElse->new;
+Test::MouseX::POE::Timers::SomeoneElse->new;
 POE::Kernel->run;
 
 is($inside_cnt, 1, 'right self_tick is called by $self inside the session');

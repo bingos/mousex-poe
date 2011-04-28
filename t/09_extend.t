@@ -5,7 +5,7 @@ use Test::More tests => 6;
 my ($base_start_called, $extended_start_called);
 {
   package Base;
-  use MooseX::POE;
+  use MouseX::POE;
 
   sub START { 
     # Do this rather than embedd ::ok(1) here so ath get proper failing reports
@@ -20,7 +20,7 @@ my ($base_start_called, $extended_start_called);
 }
 {
   package Extended;
-  use MooseX::POE;
+  use MouseX::POE;
 
   extends 'Base';
 
