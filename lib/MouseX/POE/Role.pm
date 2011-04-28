@@ -6,12 +6,8 @@ use Mouse::Exporter;
 use Mouse::Util::MetaRole;
 
 Mouse::Exporter->setup_import_methods(
-    with_caller    => [qw(event)],
-    also           => 'Mouse::Role',
-    install        => [qw(import unimport)],
-    role_metaroles => {
-        role => ['MouseX::POE::Meta::Role'],
-    },
+    as_is           => [qw(event)],
+    also            => 'Mouse::Role',
 );
 
 sub init_meta {
@@ -20,24 +16,22 @@ sub init_meta {
     my $for = $args{for_class};
     eval qq{package $for; use POE; };
 
-    my $init_meta = Mouse::Role->init_meta(%args);
+    my $meta = Mouse->init_meta( %args );
 
     Mouse::Util::MetaRole::apply_metaroles(
-          for             => $args{for_class},
-          role_metaroles => {
-              role => ['MouseX::POE::Meta::Role'],
-          },
+      for     => $args{for_class},
+      role_metaroles => {
+        role => ['MouseX::POE::Meta::Role','MouseX::POE::Meta::Trait'],
+      },
     );
 
-    goto $init_meta;
+    return $meta;
 }
 
 sub event {
-    my ( $caller, $name, $method ) = @_;
-    my $class = Mouse::Meta::Class->initialize($caller);
-    $class->add_state_method( $name => $method );
+    my $class = Mouse::Meta::Class->initialize( scalar caller );
+    $class->add_state_method( @_ );
 }
-
 
 1;
 __END__

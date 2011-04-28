@@ -3,6 +3,7 @@ package MouseX::POE::Meta::Trait::Object;
 
 use Mouse::Role;
 use POE::Session;
+use Mouse::Util;
 
 sub BUILD {
     my $self = shift;
@@ -55,18 +56,19 @@ sub delay_adjust { my $self = shift; $self->call( _call_kernel_with_my_session =
 sub STARTALL {
     my ( $self, @params ) = @_;
     $params[4] = pop @params;
-    foreach
-        my $method ( reverse $self->meta->find_method_by_name('START') )
-    {
-        $method->{body}->( $self, @params );
+    for my $class (reverse $self->meta->linearized_isa) {
+      my $start = Mouse::Util::get_code_ref($class, 'START')
+          || next;
+      $start->( $self, @params );
     }
 }
 
 sub STOPALL {
     my ( $self, $params ) = @_;
-    foreach
-        my $method ( reverse $self->meta->find_method_by_name('STOP') ) {
-        $method->{body}->( $self, $params );
+    for my $class (reverse $self->meta->linearized_isa) {
+      my $start = Mouse::Util::get_code_ref($class, 'START')
+          || next;
+      $start->( $self, $params );
     }
 }
 
