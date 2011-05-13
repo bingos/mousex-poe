@@ -101,6 +101,12 @@ no Mouse::Role;
 
 __END__
 
+=begin Pod::Coverage
+
+  BUILD
+
+=end Pod::Coverage
+
 =head1 SYNOPSIS
 
     package Counter;

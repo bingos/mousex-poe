@@ -35,6 +35,8 @@ sub add_state_method {
     $self->add_method( $name => $method );
 }
 
+1;
+
 =for comment
 
 after add_role => sub {
@@ -46,5 +48,13 @@ after add_role => sub {
 };
 
 =cut
+
+=begin Pod::Coverage
+
+  default_events
+  get_state_method_name
+  add_state_method
+
+=end Pod::Coverage
 
 1;

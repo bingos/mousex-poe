@@ -43,6 +43,12 @@ sub event {
 1;
 __END__
 
+=begin Pod::Coverage
+
+  init_meta
+
+=end Pod::Coverage
+
 =head1 SYNOPSIS
 
     package Counter;
