@@ -4,6 +4,7 @@ use MouseX::POE::Meta::Role;
 
 use Mouse::Exporter;
 use Mouse::Util::MetaRole;
+use Mouse::Role;
 
 Mouse::Exporter->setup_import_methods(
     as_is           => [qw(event)],
@@ -23,6 +24,11 @@ sub init_meta {
       role_metaroles => {
         role => ['MouseX::POE::Meta::Role','MouseX::POE::Meta::Trait'],
       },
+    );
+
+    Mouse::Util::MetaRole::apply_base_class_roles(
+      for_class => $args{for_class},
+      roles => ['MouseX::POE::Meta::Trait::Object','MouseX::POE::Meta::Trait','MouseX::POE::Meta::Trait::Class'],
     );
 
     return $meta;
