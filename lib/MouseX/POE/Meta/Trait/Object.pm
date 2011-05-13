@@ -66,7 +66,7 @@ sub STARTALL {
 sub STOPALL {
     my ( $self, $params ) = @_;
     for my $class (reverse $self->meta->linearized_isa) {
-      my $start = Mouse::Util::get_code_ref($class, 'START')
+      my $start = Mouse::Util::get_code_ref($class, 'STOP')
           || next;
       $start->( $self, $params );
     }
