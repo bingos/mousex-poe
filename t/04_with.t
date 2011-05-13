@@ -11,7 +11,7 @@ SKIP: {
 {
     package Rollo;
     use MouseX::POE::Role;
-    
+
     sub foo { ::pass('foo!')}
 
     event yarr => sub { ::pass("yarr!"); shift->yield('matey'); };
@@ -22,22 +22,22 @@ SKIP: {
 {
     package App;
     use MouseX::POE;
-    
+
     with qw(Rollo);
-    
-    sub START { 
+
+    sub START {
         my ($self) = $_[OBJECT];
         ::pass('START');
         $self->foo();
         $self->yield('next');
     }
-    
+
     event next => sub {
         my ($self) = $_[OBJECT];
         ::pass('next');
         $self->yield("yarr");
     };
-    
+
     sub STOP { ::pass('STOP') }
 }
 

@@ -14,7 +14,7 @@ around default_events => sub {
     return $events;
 };
 
-=for comment 
+=for comment
 
 around add_role => sub {
     my ( $next, $self, $role ) = @_;

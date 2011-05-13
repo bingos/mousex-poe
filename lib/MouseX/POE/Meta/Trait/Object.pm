@@ -132,7 +132,7 @@ __END__
 
     no MouseX::Poe;
 
-  
+
 =head1 DESCRIPTION
 
 MouseX::POE::Meta::TraitObject is a role that is applied to the object base
@@ -182,7 +182,7 @@ the C<_start> event from POE.)
 
 Along similar lines to C<STARTALL>, but for C<STOP> instead.
 
-=head1 PREDEFINED EVENTS 
+=head1 PREDEFINED EVENTS
 
 =method START
 
