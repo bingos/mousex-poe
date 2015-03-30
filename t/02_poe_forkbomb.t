@@ -46,10 +46,10 @@ my %english = (
         ::diag printf(
             "%4d %s child %s%s\n",
             $self->id,
-            $english{$direction},
-            $kernel->call( $child, 'on_fetch_id' ),
+            ( $english{$direction} || '' ),
+            ( $kernel->call( $child, 'on_fetch_id' ) || '' ),
             (
-                ( $direction eq 'create' ) ? (" (child returned: $return)") : ''
+                ( $direction && $direction eq 'create' ) ? (" (child returned: $return)") : ''
             )
         );
     }

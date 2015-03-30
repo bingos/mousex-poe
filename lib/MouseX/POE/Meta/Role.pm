@@ -1,4 +1,5 @@
 package MouseX::POE::Meta::Role;
+
 # ABSTRACT: Pay no attention to this.
 use Mouse::Role;
 with qw(MouseX::POE::Meta::Trait);

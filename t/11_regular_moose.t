@@ -12,4 +12,4 @@ use Test::More tests => 1;
     has a => ( is => 'ro' );
 }
 
-ok(!exists %{ Bar->new( a => 1) }->{session_id}, 'no session_id');
+ok(!exists Bar->new( a => 1)->{session_id}, 'no session_id');

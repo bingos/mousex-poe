@@ -1,4 +1,5 @@
 package MouseX::POE::Meta::Trait::Class;
+
 # ABSTRACT: No achmed inside
 use Mouse::Role;
 

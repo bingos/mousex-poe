@@ -1,4 +1,5 @@
 package MouseX::POE::Meta::Trait;
+
 # ABSTRACT: There be dragons here.
 use Mouse::Role;
 

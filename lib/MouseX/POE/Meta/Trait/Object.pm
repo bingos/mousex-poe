@@ -1,4 +1,5 @@
 package MouseX::POE::Meta::Trait::Object;
+
 # ABSTRACT: The base class role for MouseX::POE
 
 use Mouse::Role;

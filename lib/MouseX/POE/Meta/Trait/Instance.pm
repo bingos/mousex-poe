@@ -1,4 +1,5 @@
 package MouseX::POE::Meta::Trait::Instance;
+
 # ABSTRACT: A Instance Metaclass for MouseX::POE
 
 use Mouse::Role;

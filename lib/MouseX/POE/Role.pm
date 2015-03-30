@@ -1,4 +1,5 @@
 package MouseX::POE::Role;
+
 # ABSTRACT: Eventful roles
 use MouseX::POE::Meta::Role;
 

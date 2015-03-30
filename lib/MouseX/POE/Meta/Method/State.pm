@@ -1,4 +1,5 @@
 package MouseX::POE::Meta::Method::State;
+
 # ABSTRACT: Dont look into this, its boring
 use strict;
 use Mouse;
